@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package user;
+
+option java_multiple_files = true;
+option java_package = "com.network.userservice.grpc";
+option java_outer_classname = "UserProto";
+
+// User service definition
+service UserService {
+
+  // Get user information by ID
+  rpc GetUser (UserRequest) returns (UserResponse);
+}
+
+// Request containing the user ID
+message UserRequest {
+  int64 userId = 1;
+}
+
+// Response containing user details
+message UserResponse {
+  int64 userId = 1;
+  string userName = 2;
+  string email = 3;
+  bool exists = 4;
+}
